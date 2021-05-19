@@ -66,7 +66,15 @@ class TV {
         if (this.volume < 100 && (this.volume + 10) < 100) {
             this.volume += 10;
         };
+    
     };
+    // Joel's solution:
+    // increaseVolume(n) {
+    //     this.volume += n;
+    //     if (volume > 100) {
+    //         this.colume = 100;
+    //     };
+    // };
     decreaseVolume() {
         if (this.volume > 0 && (this.volume - 10) > 0) {
             this.volume -= 10;
