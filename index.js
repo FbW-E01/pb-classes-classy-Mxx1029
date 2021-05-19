@@ -17,14 +17,10 @@ console.log(result);
 // 2. Tick Tock
 
 class Clock {
-    constructor(input) {
-        this.stop = function() {
-        };
-        this.start = function() {
-            this.render();
-        };
-        this.input = input;
-    }
+    constructor({template}) { // object destructuring
+        this.template = template;
+    };
+
     render() {
         let date = new Date();
   
@@ -37,12 +33,21 @@ class Clock {
         let secs = date.getSeconds();
         if (secs < 10) secs = '0' + secs;
     
-        let output = this.input.template
+        let output = this.template
         .replace('h', hours)
         .replace('m', mins)
         .replace('s', secs);
     
         console.log(output);
+    };
+
+    stop() {
+    };
+
+    start() {
+        this.render();
+        setInterval(this.render.bind(this), 1000);
+        // render needs to be rebound to it to work
     };
 };
 
